@@ -1,47 +1,47 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllFellows, createFellow } from "../adapters/fellowAdapters";
+import { getAllFoods, createFoods } from "../adapters/fellowAdapters";
 
 const Home = () => {
-  const [fellows, setFellows] = useState([]);
-  const [newFellowName, setNewFellowName] = useState("");
-  const [newlyAddedFellow, setNewlyAddedFellow] = useState({});
+  const [foods, setFoods] = useState([]);
+  const [newFoodName, setNewFoodName] = useState("");
+  const [newlyAddedFood, setNewlyAddedFood] = useState({});
 
   useEffect(() => {
     const doFetch = async () => {
-      const [allFellows, error] = await getAllFellows();
-      setFellows(allFellows);
+      const [allFoods, error] = await getAllFoods();
+      setFoods(allFoods);
     };
     doFetch();
-  }, [newlyAddedFellow]);
+  }, [newlyAddedFood]);
 
-  const handleCreateFellow = async (e) => {
+  const handleCreateFood = async (e) => {
     e.preventDefault();
-    const [newFellow, error] = await createFellow(newFellowName);
-    setNewlyAddedFellow(newFellow);
-    setNewFellowName("");
+    const [newFood, error] = await createFoods(newFoodName);
+    setNewlyAddedFood(newFood);
+    setNewFoodName("");
   };
 
   return (
     <>
       <h1>Home</h1>
-      <form onSubmit={handleCreateFellow}>
-        <label htmlFor="name">Add a Fellow</label>
+      <form onSubmit={handleCreateFood}>
+        <label htmlFor="name">Add a Foods</label>
         <input
           type="text"
           name="name"
           id="name"
-          value={newFellowName}
-          onChange={(e) => setNewFellowName(e.target.value)}
+          value={newFoodName}
+          onChange={(e) => setNewFoodName(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>
       <ul>
-        {fellows.map((fellow) => {
+        {foods.map((food) => {
           return (
-            <li key={fellow.id}>
-              <Link to={`/fellows/${fellow.id}`}>
-                {fellow.name} (User {fellow.id})
+            <li key={food.id}>
+              <Link to={`/fellows/${food.id}`}>
+                {food.name} (User {food.id})
               </Link>
             </li>
           );

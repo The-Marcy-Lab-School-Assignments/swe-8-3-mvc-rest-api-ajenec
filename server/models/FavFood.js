@@ -1,50 +1,50 @@
 const getId = require("../utils/getId");
 
-const fellows = [
-  { name: "Ajene", id: getId() },
-  { name: "Alisa", id: getId() },
-  { name: "Jay-J", id: getId() },
+const foods = [
+  { name: "Pizza", id: getId() },
+  { name: "Steak", id: getId() },
+  { name: "Nuggets", id: getId() },
 ];
 
-class Fellow {
+class Food {
   static create(name) {
-    const newFellow = {
+    const newFood = {
       name,
       id: getId(),
     };
-    fellows.push(newFellow);
-    return newFellow;
+    foods.push(newFood);
+    return newFood;
   }
 
   //get ALL values
   static list() {
-    return [...fellows];
+    return [...foods];
   }
 
   //get ONE value
   static find(id) {
-    return fellows.find((fellow) => fellow.id === id);
+    return foods.find((food) => food.id === id);
   }
 
   // UPDATE ONE value
   static editName(id, newName) {
-    const fellow = Fellow.find(id);
-    if (!fellow) return null;
-    fellow.name = newName;
-    return fellow;
+    const food = Food.find(id);
+    if (!food) return null;
+    food.name = newName;
+    return food;
   }
 
   // DELETE ONE value
   static delete(id) {
-    const fellowIndex = fellows.findIndex((fellow) => fellow.id === id);
-    if (fellowIndex < 0) return false;
+    const foodIndex = foods.findIndex((food) => food.id === id);
+    if (foodIndex < 0) return false;
 
-    fellows.splice(fellowIndex, 1);
+    foods.splice(foodIndex, 1);
     return true;
   }
 }
 
-module.exports = Fellow;
+module.exports = Food;
 
 /* 
 Take a moment and play with these class methods. Try the following and

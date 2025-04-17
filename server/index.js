@@ -2,12 +2,12 @@ const express = require("express");
 const path = require("path");
 
 const {
-  serveFellows,
-  serveFellow,
-  createFellow,
-  updateFellow,
-  deleteFellow,
-} = require("./controllers/fellowControllers");
+  serveFoods,
+  serveFood,
+  createFood,
+  updateFood,
+  deleteFood,
+} = require("./controllers/foodControllers");
 
 const app = express();
 const pathToFrontendDist = path.join(__dirname, "../frontend/dist");
@@ -33,11 +33,11 @@ app.use(parseJSON);
 //////////////////
 // Endpoints  ///
 /////////////////
-app.get("/api/fellows", serveFellows);
-app.get("/api/fellows/:id", serveFellow);
-app.post("/api/fellows", createFellow);
-app.patch("/api/fellows/:id", updateFellow);
-app.delete("/api/fellows/:id", deleteFellow);
+app.get("/api/foods", serveFoods);
+app.get("/api/foods/:id", serveFood);
+app.post("/api/foods", createFood);
+app.patch("/api/foods/:id", updateFood);
+app.delete("/api/foods/:id", deleteFood);
 
 // app.get("*", (req, res, next) => {
 //   if (req.originalUrl.startsWith("/api")) return next();
