@@ -15,7 +15,7 @@ const FoodDetails = () => {
   useEffect(() => {
     const doFetch = async () => {
       const [foundFood, error] = await getFoodById(id);
-      setFellow(foundFood);
+      setFood(foundFood);
     };
     doFetch();
   }, []);
@@ -45,7 +45,7 @@ const FoodDetails = () => {
           type="text"
           name="name"
           id="name"
-          value={newFellowName}
+          value={newFoodName}
           onChange={(e) => setNewFoodName(e.target.value)}
           placeholder="New Name"
         />

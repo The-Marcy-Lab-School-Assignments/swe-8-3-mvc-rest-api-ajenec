@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllFoods, createFoods } from "../adapters/fellowAdapters";
+import { getAllFoods, createFood } from "../adapters/foodAdapters";
 
 const Home = () => {
   const [foods, setFoods] = useState([]);
@@ -17,7 +17,7 @@ const Home = () => {
 
   const handleCreateFood = async (e) => {
     e.preventDefault();
-    const [newFood, error] = await createFoods(newFoodName);
+    const [newFood, error] = await createFood(newFoodName);
     setNewlyAddedFood(newFood);
     setNewFoodName("");
   };
@@ -40,8 +40,8 @@ const Home = () => {
         {foods.map((food) => {
           return (
             <li key={food.id}>
-              <Link to={`/fellows/${food.id}`}>
-                {food.name} (User {food.id})
+              <Link to={`/foods/${food.id}`}>
+                {food.name} (Fav {food.id})
               </Link>
             </li>
           );
